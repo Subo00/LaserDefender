@@ -19,10 +19,12 @@ public class Player : MonoBehaviour
     private float _yMin, _yMax;
     private Coroutine _firingCorutine;
     private ObjectPool _objectPool;
+    private AudioSource _audioSource; //plays laser sound
     void Start()
     {
         SetUpMoveLimits();
         _objectPool = gameObject.GetComponent<ObjectPool>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void SetUpMoveLimits()
@@ -77,7 +79,7 @@ public class Player : MonoBehaviour
 
                 laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0,_laserSpeed);
             }
-
+            _audioSource.Play();
             yield return new WaitForSeconds(_shootRate);
         }
     }
@@ -93,6 +95,29 @@ public class Player : MonoBehaviour
     private void ProcessHit(DamageDealer damageDealer)
     {
         _health -= damageDealer.GetDamage();
-        if(_health <= 0) Destroy(gameObject);
+        if(_health <= 0) Death();
     }
+
+    private void Death()
+    {
+        DeathAnimation();
+        Destroy(gameObject);
+        FindObjectOfType<SceneController>().LoadGameOver();
+    }
+
+    private void DeathAnimation()
+    {
+        var gameController = GameObject.FindGameObjectWithTag("GameController");
+        ObjectPool objectPoolExplosion = gameController.GetComponentsInChildren<ObjectPool>()[1]; //pool 0 is for enemy bullets
+        
+        GameObject explosion = objectPoolExplosion.GetPooledObject();
+        if(explosion != null)
+        {
+            explosion.transform.position = transform.position;
+            explosion.SetActive(true);
+        }
+
+    }
+
+    public int GetHealth() { return _health; }
 }

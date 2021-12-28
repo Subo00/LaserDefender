@@ -9,11 +9,12 @@ public class DamageDealer : MonoBehaviour
     public int GetDamage(){ return _damage; }
     public void OnTriggerEnter2D(Collider2D other)
     {
-        HandleCollision(other);
+        StartCoroutine("HandleCollision");
     }
 
-    public virtual void HandleCollision(Collider2D other)
+    IEnumerator HandleCollision()
     {
+        yield return new WaitForSeconds(0.1f);
         gameObject.SetActive(false);
     }
 

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7493050819537505272}
   - component: {fileID: 7493050819537505273}
   - component: {fileID: 7493050819537505275}
-  - component: {fileID: 2001206557}
   - component: {fileID: 8093530781372097627}
   - component: {fileID: 755965130}
   m_Layer: 8
@@ -103,21 +102,7 @@ MonoBehaviour:
   _health: 100
   _laserSpeed: 20
   _shootRate: 0.2
---- !u!114 &2001206557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7493050819537505158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d92685c5c135732468e6ebde80a458be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pooledObjects: []
-  _objectToPool: {fileID: 7365842692945657379, guid: 0f7744c5b7fe34f4aa8d1a12f07507a2, type: 3}
-  _amountToPool: 15
+  _laserPool: {fileID: 0}
 --- !u!60 &8093530781372097627
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ public class DamageDealer : MonoBehaviour
 
     IEnumerator HandleCollision()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0f);
         gameObject.SetActive(false);
     }
 

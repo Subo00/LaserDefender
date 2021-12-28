@@ -9,13 +9,14 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] private int _amountToPool;
 
 
-    void Start()
+    void Awake()
     {
         _pooledObjects = new List<GameObject>();
         GameObject tmp;
         for(int i = 0; i < _amountToPool; i++)
         {
             tmp = Instantiate(_objectToPool);
+            tmp.transform.parent = gameObject.transform;
             tmp.SetActive(false);
             _pooledObjects.Add(tmp);
         }
@@ -31,5 +32,10 @@ public class ObjectPool : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public void Debugging()
+    {
+        Debug.Log("I am here safe and soudn " + _amountToPool);
     }
 }

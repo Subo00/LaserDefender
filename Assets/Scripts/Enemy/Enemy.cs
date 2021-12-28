@@ -19,24 +19,26 @@ public class Enemy : MonoBehaviour
     private Material _matDefault;
     private AudioSource _audioSource; //palys laser sound
     private Score _score;
-    void Awake()
+    void Start()
     {
         var gameController = GameObject.FindGameObjectWithTag("GameController"); // get the Pools in GameController
         ObjectPool[] objectPools = gameController.GetComponentsInChildren<ObjectPool>(); 
         _objectPoolLaser = objectPools[0];
         _objectPoolExplosion = objectPools[1];
 
-        _health = _maxHealth;
-
         _score = GameObject.FindObjectOfType<Score>();
 
         _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         _matDefault = _spriteRenderer.material;                                //sets the default material
 
-        _audioSource = GetComponent<AudioSource>();
+        _audioSource = GetComponent<AudioSource>();     
+    }
 
+    void OnEnable()
+    {
+        _health = _maxHealth;
         _shootRate = Random.Range(_minShootRate, _maxShootRate);
-        StartCoroutine(ShootContinuously());       
+        StartCoroutine(ShootContinuously());  
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -44,11 +46,17 @@ public class Enemy : MonoBehaviour
         Invoke("ResetMaterial", 0.2f);
 
         //add a state when enemy hits player 
-
-        //other.gameObject.SetActive(false);
-
-        DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
-        ProcessHit(damageDealer);
+        if(other.tag != "Player")
+        {
+            DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
+            if(damageDealer != null)
+            ProcessHit(damageDealer);
+        }
+        else
+        {
+            other.gameObject.GetComponent<Player>().Death();
+            Death();
+        }  
     }
     private void ProcessHit(DamageDealer damageDealer)
     {
@@ -70,7 +78,7 @@ public class Enemy : MonoBehaviour
 
         _score.AddScore(_maxHealth);
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
          
     }
    

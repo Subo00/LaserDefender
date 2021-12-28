@@ -13,17 +13,16 @@ public class Player : MonoBehaviour
     [Header("Projectile")]
     [SerializeField] private float _laserSpeed = 2f;
     [SerializeField] private float _shootRate = 0.5f;
+    [SerializeField] private ObjectPool _laserPool;
 
     ////////////Private variables//////////////
     private float _xMin, _xMax;
     private float _yMin, _yMax;
     private Coroutine _firingCorutine;
-    private ObjectPool _objectPool;
     private AudioSource _audioSource; //plays laser sound
     void Start()
     {
         SetUpMoveLimits();
-        _objectPool = gameObject.GetComponent<ObjectPool>();
         _audioSource = GetComponent<AudioSource>();
     }
 
@@ -70,7 +69,7 @@ public class Player : MonoBehaviour
     {
         while(true)
         {           
-            GameObject laser = _objectPool.GetPooledObject();
+            GameObject laser = _laserPool.GetPooledObject();
             if(laser != null)
             {
                 laser.transform.position = transform.position;
@@ -98,7 +97,7 @@ public class Player : MonoBehaviour
         if(_health <= 0) Death();
     }
 
-    private void Death()
+    public void Death()
     {
         DeathAnimation();
         Destroy(gameObject);

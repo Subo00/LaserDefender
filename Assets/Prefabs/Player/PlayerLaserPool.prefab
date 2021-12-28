@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4594939293817386828
+--- !u!1 &3734226108738208028
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4594939293817386830}
-  - component: {fileID: 4594939293817386831}
+  - component: {fileID: 8405996756531315941}
+  - component: {fileID: 5062061920069757898}
   m_Layer: 0
-  m_Name: EnemySpawner
+  m_Name: PlayerLaserPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4594939293817386830
+--- !u!4 &8405996756531315941
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4594939293817386828}
+  m_GameObject: {fileID: 3734226108738208028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,20 +31,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4594939293817386831
+--- !u!114 &5062061920069757898
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4594939293817386828}
+  m_GameObject: {fileID: 3734226108738208028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4402a7a95703d1b48b3196c880aa7f8d, type: 3}
+  m_Script: {fileID: 11500000, guid: d92685c5c135732468e6ebde80a458be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _waveConfigs:
-  - {fileID: 11400000, guid: 0730fd8884175d245a4febdbc27b7537, type: 2}
-  - {fileID: 11400000, guid: 92eaf2ef55a60df488cc9e87f58e8297, type: 2}
-  - {fileID: 11400000, guid: e6ee5600d72d9734f8e1bc7e664169f4, type: 2}
-  _isLooping: 1
+  _pooledObjects: []
+  _objectToPool: {fileID: 7365842692945657379, guid: 0f7744c5b7fe34f4aa8d1a12f07507a2, type: 3}
+  _amountToPool: 15

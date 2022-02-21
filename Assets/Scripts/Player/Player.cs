@@ -18,12 +18,16 @@ public class Player : MonoBehaviour
     ////////////Private variables//////////////
     private float _xMin, _xMax;
     private float _yMin, _yMax;
+    private Vector3 _mousePosition;
+    private Rigidbody2D _rigidbody;
+    private Vector2 _position = new Vector2(0f, 0f);
     private Coroutine _firingCorutine;
     private AudioSource _audioSource; //plays laser sound
     void Start()
     {
         SetUpMoveLimits();
         _audioSource = GetComponent<AudioSource>();
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
     private void SetUpMoveLimits()
@@ -45,15 +49,20 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        float deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * _moveSpeed;
-        float deltaY = Input.GetAxis("Vertical") * Time.deltaTime * _moveSpeed;
+        _mousePosition = Input.mousePosition;
+        _mousePosition = Camera.main.ScreenToWorldPoint(_mousePosition);
 
-        float newXPos = Mathf.Clamp(transform.position.x + deltaX,_xMin,_xMax);     
-        float newYPos = Mathf.Clamp(transform.position.y + deltaY,_yMin,_yMax);
+        float newXPos = Mathf.Clamp(_mousePosition.x, _xMin, _xMax);
+        float newYPos = Mathf.Clamp(_mousePosition.y, _yMin, _yMax);
 
-        transform.position = new Vector2(newXPos, newYPos);
+        Vector2 newPos = new Vector2(newXPos, newYPos);
+        _position = Vector2.Lerp(transform.position, newPos, _moveSpeed);
     }
 
+    private void FixedUpdate()
+    {
+        _rigidbody.MovePosition(_position);
+    }
     private void Shoot()
     {
         if(Input.GetButtonDown("Fire1"))

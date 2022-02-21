@@ -45,8 +45,8 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        float deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * _moveSpeed;
-        float deltaY = Input.GetAxis("Vertical") * Time.deltaTime * _moveSpeed;
+        float deltaX = Input.GetAxis("Mouse X") * Time.deltaTime * _moveSpeed;
+        float deltaY = Input.GetAxis("Mouse Y") * Time.deltaTime * _moveSpeed;
 
         float newXPos = Mathf.Clamp(transform.position.x + deltaX,_xMin,_xMax);     
         float newYPos = Mathf.Clamp(transform.position.y + deltaY,_yMin,_yMax);

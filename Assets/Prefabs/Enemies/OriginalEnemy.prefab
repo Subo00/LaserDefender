@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  _laserSpeed: 3
+  _laserSpeed: 5
   _minShootRate: 2
   _maxShootRate: 4
   _matWhite: {fileID: 2100000, guid: cf21d44ddf611924bb15acdd60f28a57, type: 3}

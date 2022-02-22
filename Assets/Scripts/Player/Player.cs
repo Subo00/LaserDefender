@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
         SetUpMoveLimits();
         _audioSource = GetComponent<AudioSource>();
         _rigidbody = GetComponent<Rigidbody2D>();
+        _firingCorutine = StartCoroutine(ShootContinuously());  
     }
 
     private void SetUpMoveLimits()
@@ -44,7 +45,6 @@ public class Player : MonoBehaviour
     void Update()
     {
         Move();
-        Shoot();
     }
 
     private void Move()
@@ -63,17 +63,7 @@ public class Player : MonoBehaviour
     {
         _rigidbody.MovePosition(_position);
     }
-    private void Shoot()
-    {
-        if(Input.GetButtonDown("Fire1"))
-        {
-           _firingCorutine = StartCoroutine(ShootContinuously());
-        }
-        if(Input.GetButtonUp("Fire1"))
-        {
-            StopCoroutine(_firingCorutine);
-        }
-    }
+   
     IEnumerator ShootContinuously()
     {
         while(true)

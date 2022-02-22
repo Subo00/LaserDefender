@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7359c89b9a75540b80c7614c0b771b, type: 3}
   m_Name: WaveC
   m_EditorClassIdentifier: 
-  _enemyPoolIndex: 0
+  _enemyPoolIndex: 1
   _pathPrefab: {fileID: 1078922462278481178, guid: 293e81031ea178b4180372f1219d65cd, type: 3}
   _timeBetweenSpawns: 0.8
   _spawnRandomFactor: 0.3

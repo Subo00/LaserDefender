@@ -17,7 +17,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 965135590221161593, guid: 50780158d96132b4b89619fe02befd85, type: 3}
       propertyPath: _laserSpeed
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 965135590221161593, guid: 50780158d96132b4b89619fe02befd85, type: 3}
       propertyPath: _maxShootRate

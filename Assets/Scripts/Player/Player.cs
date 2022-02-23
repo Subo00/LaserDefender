@@ -60,7 +60,6 @@ public class Player : MonoBehaviour
         if(_powerTime > 0f)
         {
             _powerTime -= Time.deltaTime;
-            Debug.Log("Timer: " + _powerTime);
         }
         else if(_powerTime < 0f)
         {
@@ -97,7 +96,7 @@ public class Player : MonoBehaviour
                     if(laser != null)
                     {
                         laser.transform.position = transform.position;
-                        laser.transform.rotation = Quaternion.Euler( new Vector3(0f,0f, 5f*i));
+                        laser.transform.rotation = Quaternion.Euler( new Vector3(0f,0f, 5f*i)); //creates a spread fire effect
                         laser.SetActive(true);
 
                         laser.GetComponent<Rigidbody2D>().velocity = new Vector2(-5f*i,_laserSpeed);

@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+ 
+    
+
     ////////////SerializeField paramaters/////////
     [Header("Player")]
     [SerializeField] private float _moveSpeed = 10f;
@@ -23,6 +26,10 @@ public class Player : MonoBehaviour
     private Vector2 _position = new Vector2(0f, 0f);
     private Coroutine _firingCorutine;
     private AudioSource _audioSource; //plays laser sound
+
+    //variables for power up - spread shoot
+    private bool _isPower = false;
+    private float _powerTime = 0f;
     void Start()
     {
         SetUpMoveLimits();
@@ -45,8 +52,22 @@ public class Player : MonoBehaviour
     void Update()
     {
         Move();
+        Timer();
     }
 
+    private void Timer()
+    {
+        if(_powerTime > 0f)
+        {
+            _powerTime -= Time.deltaTime;
+            Debug.Log("Timer: " + _powerTime);
+        }
+        else if(_powerTime < 0f)
+        {
+            _isPower = false;
+            _powerTime = 0f;
+        }
+    }
     private void Move()
     {
         _mousePosition = Input.mousePosition;
@@ -67,24 +88,42 @@ public class Player : MonoBehaviour
     IEnumerator ShootContinuously()
     {
         while(true)
-        {           
-            GameObject laser = _laserPool.GetPooledObject();
-            if(laser != null)
+        {   
+            if(_isPower)
             {
-                laser.transform.position = transform.position;
-                laser.transform.rotation = transform.rotation;
-                laser.SetActive(true);
+                for(int i = -1; i < 2; i++)
+                {
+                    GameObject laser = _laserPool.GetPooledObject();
+                    if(laser != null)
+                    {
+                        laser.transform.position = transform.position;
+                        laser.transform.rotation = Quaternion.Euler( new Vector3(0f,0f, 5f*i));
+                        laser.SetActive(true);
 
-                laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0,_laserSpeed);
+                        laser.GetComponent<Rigidbody2D>().velocity = new Vector2(-5f*i,_laserSpeed);
+                    }
+                
+                }
+            } else
+            {
+                GameObject laser = _laserPool.GetPooledObject();
+                if(laser != null)
+                {
+                    laser.transform.position = transform.position;
+                    laser.transform.rotation = transform.rotation;
+                    laser.SetActive(true);
+
+                    laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0,_laserSpeed);
+                }
             }
             _audioSource.Play();
             yield return new WaitForSeconds(_shootRate);
         }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        
         DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
         if(!damageDealer) {return;}
         ProcessHit(damageDealer);
@@ -95,7 +134,7 @@ public class Player : MonoBehaviour
         _health -= damageDealer.GetDamage();
         if(_health <= 0) Death();
     }
-
+    public void ProcessHeal(int hp) {_health += hp;}
     public void Death()
     {
         DeathAnimation();
@@ -118,4 +157,11 @@ public class Player : MonoBehaviour
     }
 
     public int GetHealth() { return _health; }
+    public void PoweredFire(float time)
+    {
+        _isPower = true;
+        _powerTime += time;
+    }
+    
+    
 }

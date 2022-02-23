@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    ////////////////Serialize field//////////////
+    [SerializeField]private AudioClip _audioClip; //plays a sound on pick up
+
+    private void OnTriggerEnter2D(Collider2D other) 
     {
-        
+        if(other.tag == "Player")
+        {
+            var player = other.GetComponent<Player>();
+            GetPower(player);
+            AudioSource.PlayClipAtPoint(_audioClip, transform.position);
+            gameObject.SetActive(false);
+        }   
     }
 
-    // Update is called once per frame
-    void Update()
+    protected virtual void GetPower(Player player)
     {
-        
+        return;
     }
 }

@@ -5,26 +5,16 @@ using UnityEngine;
 public class Shield : MonoBehaviour
 {
     private Score _score;
-    private Transform _playerTransform;
-    void OnEnable()
-    {
-    }
-    void Start()
+    void Awake() //awake because the shield will be disabled on player in Start()
     {
         _score = GameObject.FindObjectOfType<Score>();
-        _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    void FixedUpdate()
-    {
-        //transform.position = _playerTransform.position;
-    }
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other) //collects lasers and adds them as points
     {
         DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
         if(!damageDealer) {return;}
         int scoreToAdd = damageDealer.GetDamage();
-        //damageDealer.gameObject.SetActive(false);
         _score.AddScore(scoreToAdd);
     }
 }

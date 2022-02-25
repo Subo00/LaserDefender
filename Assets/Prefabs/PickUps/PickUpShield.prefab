@@ -1,20 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8487077365274009006
+--- !u!114 &2293294698301822955
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7307418052170618724}
+  m_GameObject: {fileID: 1206651495991250344}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48fc1086e5737f7138705528df964c14, type: 3}
+  m_Script: {fileID: 11500000, guid: 4dcfeadc4fe1fe361b94333b60797877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioClip: {fileID: 8300000, guid: 32ba5cffc2580ea4bada8ab29c232850, type: 3}
-  _healthToAdd: 35
---- !u!1001 &3088434915311347301
+  _audioClip: {fileID: 8300000, guid: be590b7448a12cf44b5815e2fdf28cdc, type: 3}
+  _shiledTime: 5
+--- !u!1001 &6848737076647787689
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -23,12 +23,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5743630154360680705, guid: f1c137135a1a8821eb3d2e729df156bb, type: 3}
       propertyPath: m_Name
-      value: PickUpHealth
+      value: PickUpShield
       objectReference: {fileID: 0}
     - target: {fileID: 5743630154360680709, guid: f1c137135a1a8821eb3d2e729df156bb, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 30119320b50bda94a9093367fb11a32d, type: 3}
+      objectReference: {fileID: 21300000, guid: 85db0d0f6bc8985418e94b0992bc280d, type: 3}
     - target: {fileID: 5743630154360680730, guid: f1c137135a1a8821eb3d2e729df156bb, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -76,8 +76,8 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5743630154360680711, guid: f1c137135a1a8821eb3d2e729df156bb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f1c137135a1a8821eb3d2e729df156bb, type: 3}
---- !u!1 &7307418052170618724 stripped
+--- !u!1 &1206651495991250344 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5743630154360680705, guid: f1c137135a1a8821eb3d2e729df156bb, type: 3}
-  m_PrefabInstance: {fileID: 3088434915311347301}
+  m_PrefabInstance: {fileID: 6848737076647787689}
   m_PrefabAsset: {fileID: 0}

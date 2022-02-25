@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
- 
-    
-
+    #region "Variables"
     ////////////SerializeField paramaters/////////
     [Header("Player")]
     [SerializeField] private int _health = 100;
+    [SerializeField] private GameObject _shield;
     
     [Header("Projectile")]
     [SerializeField] private float _laserSpeed = 2f;
@@ -18,33 +17,36 @@ public class Player : MonoBehaviour
     [SerializeField] private ObjectPool _laserPool;
 
     ////////////Private variables//////////////
-    
-    
     private Rigidbody2D _rigidbody;
-    
     private Coroutine _firingCorutine;
     private AudioSource _audioSource; //plays laser sound
 
     //variables for power up - spread shoot
     private bool _isPower = false;
     private float _powerTime = 0f;
+
+    //variables for power up - shield
+    private bool _isShield = false;
+    private float _shieldTime = 0f;
+
+    #endregion
     void Start()
     {
-        
+        _shield.SetActive(false);
         _audioSource = GetComponent<AudioSource>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _firingCorutine = StartCoroutine(ShootContinuously());  
     }
 
-   
-
- 
     void Update()
     {   
-        Timer();
+        TimerPower();
+        TimerShield();
     }
 
-    private void Timer()
+    #region "Pick Ups"
+    #region "Power Pick Up"
+    private void TimerPower()
     {
         if(_powerTime > 0f)
         {
@@ -56,9 +58,35 @@ public class Player : MonoBehaviour
             _powerTime = 0f;
         }
     }
+    public void PoweredFire(float time)
+    {
+        _isPower = true;
+        _powerTime += time;
+    }
     
+    #endregion
+    #region "Shield Pick Up"
+     private void TimerShield()
+    {
+        if(_shieldTime > 0f)
+        {
+            _shieldTime -= Time.deltaTime;
+        }
+        else if(_shieldTime < 0f)
+        {
+            _shield.SetActive(false);
+            _shieldTime = 0f;
+        }
+    }
 
-    
+    public void ActivateShiled(float time)
+    {
+        _shield.SetActive(true);
+        _shieldTime += time;
+    }
+    #endregion
+    public void ProcessHeal(int hp) {_health += hp;} //health pick up
+    #endregion
    
     IEnumerator ShootContinuously()
     {
@@ -109,7 +137,7 @@ public class Player : MonoBehaviour
         _health -= damageDealer.GetDamage();
         if(_health <= 0) Death();
     }
-    public void ProcessHeal(int hp) {_health += hp;}
+    
     public void Death()
     {
         DeathAnimation();
@@ -132,11 +160,6 @@ public class Player : MonoBehaviour
     }
 
     public int GetHealth() { return _health; }
-    public void PoweredFire(float time)
-    {
-        _isPower = true;
-        _powerTime += time;
-    }
     
     
 }

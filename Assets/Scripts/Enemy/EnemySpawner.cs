@@ -12,6 +12,7 @@ public class EnemySpawner : MonoBehaviour
     ////////////Private//////////////////////////////
     [SerializeField] private ObjectPool[] _enemyPools;
     private int _startingWave = 0;
+    
     IEnumerator Start()
     {
         do

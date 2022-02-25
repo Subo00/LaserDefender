@@ -26,7 +26,6 @@ public class Player : MonoBehaviour
     private float _powerTime = 0f;
 
     //variables for power up - shield
-    private bool _isShield = false;
     private float _shieldTime = 0f;
 
     #endregion

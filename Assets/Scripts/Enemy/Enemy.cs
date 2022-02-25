@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
-{
+{   
+    #region "Variables"
     //////////SerializeField////////////
     [SerializeField] private int _maxHealth = 100;
     [SerializeField] private float _laserSpeed = 1f;
     [SerializeField] private float _minShootRate, _maxShootRate;
     [SerializeField] private Material _matWhite;
+    
 
     ///////Private /////////////////
     private int _health = 0;
@@ -19,19 +21,26 @@ public class Enemy : MonoBehaviour
     private Material _matDefault;
     private AudioSource _audioSource; //palys laser sound
     private Score _score;
+    private GameObject PickUpsPool;
+    private int _numOfPickUps;
+    #endregion
     void Start()
     {
         var gameController = GameObject.FindGameObjectWithTag("GameController"); // get the Pools in GameController
         ObjectPool[] objectPools = gameController.GetComponentsInChildren<ObjectPool>(); 
         _objectPoolLaser = objectPools[0];
-        _objectPoolExplosion = objectPools[1];
+        _objectPoolExplosion = objectPools[1]; //this is hard coded I admit it 
 
         _score = GameObject.FindObjectOfType<Score>();
 
         _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         _matDefault = _spriteRenderer.material;                                //sets the default material
 
-        _audioSource = GetComponent<AudioSource>();     
+        _audioSource = GetComponent<AudioSource>();   
+
+        PickUpsPool = GameObject.FindGameObjectWithTag("PickUpsPool");
+        if(PickUpsPool == null) { Debug.LogError("You need to add a PickUpsPool to the scene and tag it");}
+        _numOfPickUps = PickUpsPool.transform.childCount; //gets all pick ups  
     }
 
     void OnEnable()
@@ -45,7 +54,7 @@ public class Enemy : MonoBehaviour
         _spriteRenderer.material = _matWhite; //makes a flashing effect
         Invoke("ResetMaterial", 0.2f);
 
-        //add a state when enemy hits player 
+        
         if(other.tag != "Player")
         {
             DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
@@ -58,6 +67,12 @@ public class Enemy : MonoBehaviour
             Death();
         }  
     }
+
+    void ResetMaterial()
+    {
+        _spriteRenderer.material = _matDefault;
+    }
+
     private void ProcessHit(DamageDealer damageDealer)
     {
         _health -= damageDealer.GetDamage();
@@ -66,7 +81,7 @@ public class Enemy : MonoBehaviour
         
     }
 
-    void Death()
+    private void Death()
     {
         
         GameObject explosion = _objectPoolExplosion.GetPooledObject();
@@ -78,13 +93,24 @@ public class Enemy : MonoBehaviour
 
         _score.AddScore(_maxHealth);
 
+        //Drops go here
+        DropPickUp();
+
         gameObject.SetActive(false);
          
     }
    
-    void ResetMaterial()
+    private void DropPickUp()
     {
-        _spriteRenderer.material = _matDefault;
+        int indexOfPickUp = Random.Range(0,_numOfPickUps);
+        ObjectPool[] objectPools = PickUpsPool.GetComponentsInChildren<ObjectPool>();
+        GameObject pickUp = objectPools[indexOfPickUp].GetPooledObject();
+        if(pickUp != null)
+        {
+            pickUp.transform.position = transform.position;
+            pickUp.transform.rotation = transform.rotation;
+            pickUp.SetActive(true);
+        }
     }
     IEnumerator ShootContinuously()
     {

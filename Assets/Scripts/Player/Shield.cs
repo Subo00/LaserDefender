@@ -17,7 +17,7 @@ public class Shield : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.position = _playerTransform.position;
+        //transform.position = _playerTransform.position;
     }
     void OnTriggerEnter2D(Collider2D other)
     {

@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _laserSpeed = 1f;
     [SerializeField] private float _minShootRate, _maxShootRate;
     [SerializeField] private Material _matWhite;
+    [Range(10,100)]
+    [SerializeField] private int _dropChance = 25;
     
 
     ///////Private /////////////////
@@ -24,6 +26,7 @@ public class Enemy : MonoBehaviour
     private GameObject PickUpsPool;
     private int _numOfPickUps;
     #endregion
+
     void Start()
     {
         var gameController = GameObject.FindGameObjectWithTag("GameController"); // get the Pools in GameController
@@ -39,7 +42,7 @@ public class Enemy : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();   
 
         PickUpsPool = GameObject.FindGameObjectWithTag("PickUpsPool");
-        if(PickUpsPool == null) { Debug.LogError("You need to add a PickUpsPool to the scene and tag it");}
+        if(PickUpsPool == null) { Debug.LogError("You need to add the PickUpsPool to the scene and tag it");}
         _numOfPickUps = PickUpsPool.transform.childCount; //gets all pick ups  
     }
 
@@ -93,7 +96,7 @@ public class Enemy : MonoBehaviour
 
         _score.AddScore(_maxHealth);
 
-        //Drops go here
+        if(Random.Range(0,100) < _dropChance)
         DropPickUp();
 
         gameObject.SetActive(false);
@@ -109,7 +112,7 @@ public class Enemy : MonoBehaviour
         {
             pickUp.transform.position = transform.position;
             pickUp.transform.rotation = transform.rotation;
-            pickUp.SetActive(true);
+            pickUp.SetActive(true); 
         }
     }
     IEnumerator ShootContinuously()

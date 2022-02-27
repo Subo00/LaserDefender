@@ -62,10 +62,12 @@ public class Player : MonoBehaviour
         _isPower = true;
         _powerTime += time;
     }
-    
+
+    public float GetPowerTime(){ return _powerTime; }
+
     #endregion
     #region "Shield Pick Up"
-     private void TimerShield()
+    private void TimerShield()
     {
         if(_shieldTime > 0f)
         {
@@ -78,11 +80,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void ActivateShiled(float time)
+    public void ActivateShield(float time)
     {
         _shield.SetActive(true);
         _shieldTime += time;
     }
+
+    public float GetShieldTime(){ return _shieldTime; }
     #endregion
     public void ProcessHeal(int hp) {_health += hp;} //health pick up
     #endregion

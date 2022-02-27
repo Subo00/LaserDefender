@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioClip: {fileID: 8300000, guid: 32ba5cffc2580ea4bada8ab29c232850, type: 3}
-  _healthToAdd: 35
+  _healthToAdd: 25
 --- !u!1001 &3088434915311347301
 PrefabInstance:
   m_ObjectHideFlags: 0

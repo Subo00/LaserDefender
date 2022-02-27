@@ -114,6 +114,10 @@ public class Enemy : MonoBehaviour
             pickUp.transform.rotation = transform.rotation;
             pickUp.SetActive(true); 
         }
+        else
+        {
+            DropPickUp();
+        }
     }
     IEnumerator ShootContinuously()
     {

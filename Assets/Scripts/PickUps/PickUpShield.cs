@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PickUpShield : PickUp
 {
-    [SerializeField] private float _shiledTime = 5f;
+    [SerializeField] private float _shieldTime = 5f;
     protected override void GetPower(Player player)
     {
-        player.ActivateShiled(_shiledTime);
+        player.ActivateShield(_shieldTime);
     }
 }

@@ -1174,6 +1174,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1024659664}
     m_Modifications:
+    - target: {fileID: 175435673, guid: 81cb86fac6e8b35439d120e15de4e0fb, type: 3}
+      propertyPath: textures.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 175435673, guid: 81cb86fac6e8b35439d120e15de4e0fb, type: 3}
+      propertyPath: textures.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: d8d02ec40f22517b0a1607c9b4eb79b4, type: 3}
+    - target: {fileID: 175435673, guid: 81cb86fac6e8b35439d120e15de4e0fb, type: 3}
+      propertyPath: textures.Array.data[1]
+      value: 
+      objectReference: {fileID: 2800000, guid: bbb043dd0dc185b1391c6b2c65e4aa17, type: 3}
+    - target: {fileID: 175435673, guid: 81cb86fac6e8b35439d120e15de4e0fb, type: 3}
+      propertyPath: textures.Array.data[2]
+      value: 
+      objectReference: {fileID: 2800000, guid: b0afebc00d9dbd7d1a02513ab221ee08, type: 3}
+    - target: {fileID: 175435673, guid: 81cb86fac6e8b35439d120e15de4e0fb, type: 3}
+      propertyPath: textures.Array.data[3]
+      value: 
+      objectReference: {fileID: 2800000, guid: f9ecb7b797d87627cb9bf78729380f88, type: 3}
+    - target: {fileID: 175435673, guid: 81cb86fac6e8b35439d120e15de4e0fb, type: 3}
+      propertyPath: textures.Array.data[4]
+      value: 
+      objectReference: {fileID: 2800000, guid: fcc76321c4c27b6bc86a7083d14064db, type: 3}
     - target: {fileID: 3188757340003507145, guid: 81cb86fac6e8b35439d120e15de4e0fb, type: 3}
       propertyPath: m_Name
       value: Background

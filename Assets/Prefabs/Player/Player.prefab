@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8093530781372097627}
   - component: {fileID: 755965130}
   - component: {fileID: 7907500405272842813}
+  - component: {fileID: 7493050819853696699}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -98,9 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab5406fb2cbdcd9499207b835bae4dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 0.5
-  _padding: 0.75
   _health: 100
+  _shield: {fileID: 0}
   _laserSpeed: 20
   _shootRate: 0.2
   _laserPool: {fileID: 0}
@@ -263,9 +263,23 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &7493050819853696699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7493050819537505158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c16c50a23983353fab516a5415c599a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveSpeed: 0.5
+  _padding: 0.5

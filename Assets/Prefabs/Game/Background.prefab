@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3188757340003507145}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.1887, y: 2.9947, z: 5}
-  m_LocalScale: {x: 19.499401, y: 48.249897, z: 1}
+  m_LocalScale: {x: 19.499401, y: 72.51603, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -94,4 +94,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20496386425306945b00828e3c17bd54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scrollSpeed: 0.3
+  _scrollSpeed: 0.2
+  textures:
+  - {fileID: 2800000, guid: 5837f545126f073449feea92d984a711, type: 3}
+  - {fileID: 2800000, guid: c62d61eb17af31a78ae69942684f467e, type: 3}
+  - {fileID: 2800000, guid: 4bfd9efea407cca0597bbc5eeefabc52, type: 3}
+  - {fileID: 2800000, guid: c90ce74897eb95de89fc2955b5eae5d2, type: 3}
+  - {fileID: 2800000, guid: c41f65f59a62cdf758ac3fcb63787046, type: 3}

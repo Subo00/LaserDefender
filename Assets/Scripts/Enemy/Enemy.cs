@@ -62,7 +62,7 @@ public class Enemy : MonoBehaviour
         {
             DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
             if(damageDealer != null)
-            ProcessHit(damageDealer);
+            ProcessHit(damageDealer.GetDamage());
         }
         else
         {
@@ -76,9 +76,9 @@ public class Enemy : MonoBehaviour
         _spriteRenderer.material = _matDefault;
     }
 
-    private void ProcessHit(DamageDealer damageDealer)
+    public void ProcessHit(int damage)
     {
-        _health -= damageDealer.GetDamage();
+        _health -= damage;
 
         if(_health <= 0) Death();
         

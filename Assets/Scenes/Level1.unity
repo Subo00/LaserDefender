@@ -227,20 +227,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9199678033679236237, guid: feaf1a7675a804fb4aef8d35f40aec63, type: 3}
   m_PrefabInstance: {fileID: 2106343763}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &492658093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 492658092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c16c50a23983353fab516a5415c599a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _moveSpeed: 0.5
-  _padding: 0.5
 --- !u!4 &492658097 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9199678033679236234, guid: feaf1a7675a804fb4aef8d35f40aec63, type: 3}
@@ -332,12 +318,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 965135590221161593, guid: 50780158d96132b4b89619fe02befd85, type: 3}
+      propertyPath: _maxHealth
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 965135590221161593, guid: 50780158d96132b4b89619fe02befd85, type: 3}
       propertyPath: PickUpsPool
       value: 
       objectReference: {fileID: 916477535}
     - target: {fileID: 3432446031956334848, guid: 50780158d96132b4b89619fe02befd85, type: 3}
       propertyPath: m_Name
       value: OriginalEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3432446031956334848, guid: 50780158d96132b4b89619fe02befd85, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3432446031956334974, guid: 50780158d96132b4b89619fe02befd85, type: 3}
       propertyPath: m_RootOrder
@@ -690,14 +684,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9199678033679236234, guid: feaf1a7675a804fb4aef8d35f40aec63, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9199678033679236234, guid: feaf1a7675a804fb4aef8d35f40aec63, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9199678033679236234, guid: feaf1a7675a804fb4aef8d35f40aec63, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.635108
       objectReference: {fileID: 0}
@@ -740,10 +726,6 @@ PrefabInstance:
     - target: {fileID: 9199678033679236237, guid: feaf1a7675a804fb4aef8d35f40aec63, type: 3}
       propertyPath: m_Name
       value: Shield
-      objectReference: {fileID: 0}
-    - target: {fileID: 9199678033679236237, guid: feaf1a7675a804fb4aef8d35f40aec63, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feaf1a7675a804fb4aef8d35f40aec63, type: 3}
@@ -1174,50 +1156,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1024659664}
     m_Modifications:
-    - target: {fileID: 175435673, guid: 81cb86fac6e8b35439d120e15de4e0fb, type: 3}
-      propertyPath: textures.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 175435673, guid: 81cb86fac6e8b35439d120e15de4e0fb, type: 3}
-      propertyPath: textures.Array.data[0]
-      value: 
-      objectReference: {fileID: 2800000, guid: 5837f545126f073449feea92d984a711, type: 3}
-    - target: {fileID: 175435673, guid: 81cb86fac6e8b35439d120e15de4e0fb, type: 3}
-      propertyPath: textures.Array.data[1]
-      value: 
-      objectReference: {fileID: 2800000, guid: c62d61eb17af31a78ae69942684f467e, type: 3}
-    - target: {fileID: 175435673, guid: 81cb86fac6e8b35439d120e15de4e0fb, type: 3}
-      propertyPath: textures.Array.data[2]
-      value: 
-      objectReference: {fileID: 2800000, guid: 4bfd9efea407cca0597bbc5eeefabc52, type: 3}
-    - target: {fileID: 175435673, guid: 81cb86fac6e8b35439d120e15de4e0fb, type: 3}
-      propertyPath: textures.Array.data[3]
-      value: 
-      objectReference: {fileID: 2800000, guid: c90ce74897eb95de89fc2955b5eae5d2, type: 3}
-    - target: {fileID: 175435673, guid: 81cb86fac6e8b35439d120e15de4e0fb, type: 3}
-      propertyPath: textures.Array.data[4]
-      value: 
-      objectReference: {fileID: 2800000, guid: c41f65f59a62cdf758ac3fcb63787046, type: 3}
-    - target: {fileID: 175435673, guid: 81cb86fac6e8b35439d120e15de4e0fb, type: 3}
-      propertyPath: textures.Array.data[5]
-      value: 
-      objectReference: {fileID: 2800000, guid: c41f65f59a62cdf758ac3fcb63787046, type: 3}
-    - target: {fileID: 175435673, guid: 81cb86fac6e8b35439d120e15de4e0fb, type: 3}
-      propertyPath: textures.Array.data[6]
-      value: 
-      objectReference: {fileID: 2800000, guid: c41f65f59a62cdf758ac3fcb63787046, type: 3}
-    - target: {fileID: 175435673, guid: 81cb86fac6e8b35439d120e15de4e0fb, type: 3}
-      propertyPath: textures.Array.data[7]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 175435673, guid: 81cb86fac6e8b35439d120e15de4e0fb, type: 3}
-      propertyPath: textures.Array.data[8]
-      value: 
-      objectReference: {fileID: 2800000, guid: b66c33c8a205442158711c03c1817a86, type: 3}
-    - target: {fileID: 3188757340003507144, guid: 81cb86fac6e8b35439d120e15de4e0fb, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 547c328572f908844be6aea9bb8d8e35, type: 2}
     - target: {fileID: 3188757340003507145, guid: 81cb86fac6e8b35439d120e15de4e0fb, type: 3}
       propertyPath: m_Name
       value: Background
@@ -1232,7 +1170,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3188757340003507146, guid: 81cb86fac6e8b35439d120e15de4e0fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.0497537
+      value: 1.0336
       objectReference: {fileID: 0}
     - target: {fileID: 3188757340003507146, guid: 81cb86fac6e8b35439d120e15de4e0fb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1746,35 +1684,8 @@ PrefabInstance:
       propertyPath: _laserPool
       value: 
       objectReference: {fileID: 1591809220}
-    - target: {fileID: 7493050819537505275, guid: 1fe57bcf5832567408de77436a3af847, type: 3}
-      propertyPath: _moveSpeed
-      value: 0.025
-      objectReference: {fileID: 0}
-    - target: {fileID: 7907500405272842813, guid: 1fe57bcf5832567408de77436a3af847, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fe57bcf5832567408de77436a3af847, type: 3}
---- !u!1 &7493050819853696698 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7493050819537505158, guid: 1fe57bcf5832567408de77436a3af847, type: 3}
-  m_PrefabInstance: {fileID: 7493050819853696697}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7493050819853696699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7493050819853696698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c16c50a23983353fab516a5415c599a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _moveSpeed: 0.5
-  _padding: 0.5
 --- !u!4 &7493050819853696705 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7493050819537505272, guid: 1fe57bcf5832567408de77436a3af847, type: 3}
@@ -1790,10 +1701,6 @@ PrefabInstance:
     - target: {fileID: 3734226108738208028, guid: 3f2f12205f7e12d4baa1739ccd041d3b, type: 3}
       propertyPath: m_Name
       value: PlayerLaserPool
-      objectReference: {fileID: 0}
-    - target: {fileID: 5062061920069757898, guid: 3f2f12205f7e12d4baa1739ccd041d3b, type: 3}
-      propertyPath: _amountToPool
-      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8405996756531315941, guid: 3f2f12205f7e12d4baa1739ccd041d3b, type: 3}
       propertyPath: m_RootOrder

@@ -132,12 +132,12 @@ public class Player : MonoBehaviour
     {
         DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
         if(!damageDealer) {return;}
-        ProcessHit(damageDealer);
+        ProcessHit(damageDealer.GetDamage());
     }
 
-    private void ProcessHit(DamageDealer damageDealer)
+    public void ProcessHit(int damage)
     {
-        _health -= damageDealer.GetDamage();
+        _health -= damage;
         if(_health <= 0) Death();
     }
     

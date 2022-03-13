@@ -4,31 +4,36 @@ using UnityEngine;
 
 public class Meteor : MonoBehaviour
 {
-    public Vector2 newForce; ///used to be changed later via script 
-
-
 
     [SerializeField] private int _maxHealth = 50;
     [SerializeField] private Material _matWhite;
     [SerializeField] private float _rotSpeed = 50.0f;
+
+    private ObjectPool _objectPoolExplosion;
 
     private Rigidbody2D _rb;
     private Material _matDefault;
     private SpriteRenderer _spriteRenderer;
     private int _health;
 
-    void Start()
+    public Rigidbody2D GetRigidbody()
+    {
+        return _rb;
+    }
+    void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        _matDefault = _spriteRenderer.material;   
+        _matDefault = _spriteRenderer.material;
+
+        var gameController = GameObject.FindGameObjectWithTag("GameController"); // get the Pools in GameController
+        ObjectPool[] objectPools = gameController.GetComponentsInChildren<ObjectPool>();
+        _objectPoolExplosion = objectPools[2];
     }
 
     void OnEnable()
     {
         _health = _maxHealth;
-        newForce = new Vector2(0f,Random.Range(1f,10f)); 
-        _rb.AddForce(newForce, ForceMode2D.Impulse);
     }
 
     private void FixedUpdate() 
@@ -75,6 +80,12 @@ public class Meteor : MonoBehaviour
     private void Death()
     {
         //add explosion
+        GameObject explosion = _objectPoolExplosion.GetPooledObject();
+        if(explosion != null)
+        {
+            explosion.transform.position = transform.position;
+            explosion.SetActive(true);
+        }
         //add sfx
 
         gameObject.SetActive(false);

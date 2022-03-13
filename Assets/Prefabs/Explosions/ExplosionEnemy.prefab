@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -2166690343733587591}
   - component: {fileID: -4459962167112576588}
   m_Layer: 0
-  m_Name: Explosion
+  m_Name: ExplosionEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,7 +42,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5651584133572312932}
   serializedVersion: 7
-  lengthInSec: 0.5
+  lengthInSec: 0.3
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -170,7 +170,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 15
+      scalar: 10
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1305,26 +1305,26 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.990566, g: 0.990566, b: 0.990566, a: 0.3764706}
-        key1: {r: 0.9137255, g: 0.7455982, b: 0.054901958, a: 0.80784315}
-        key2: {r: 1, g: 0.66761, b: 0.16509432, a: 0.17254902}
-        key3: {r: 1, g: 0.64433014, b: 0, a: 0}
-        key4: {r: 0.9056604, g: 0.7968722, b: 0.3033108, a: 0}
+        key0: {r: 0.5754717, g: 0.3521978, b: 0, a: 1}
+        key1: {r: 0.8018868, g: 0.5468031, b: 0.19290671, a: 0.72156864}
+        key2: {r: 1, g: 0.66761, b: 0.16509432, a: 0}
+        key3: {r: 0.9137255, g: 0.7455982, b: 0.054901958, a: 0.17254902}
+        key4: {r: 0.9245283, g: 0, b: 0.04388612, a: 0}
         key5: {r: 1, g: 1, b: 1, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 1, g: 1, b: 1, a: 0}
+        key7: {r: 1, g: 1, b: 1, a: 0}
         ctime0: 0
-        ctime1: 17155
-        ctime2: 26985
-        ctime3: 37394
-        ctime4: 50693
+        ctime1: 14649
+        ctime2: 26407
+        ctime3: 36430
+        ctime4: 47802
         ctime5: 65535
-        ctime6: 0
-        ctime7: 0
+        ctime6: 65535
+        ctime7: 65535
         atime0: 0
-        atime1: 32960
+        atime1: 31033
         atime2: 65535
-        atime3: 0
+        atime3: 65535
         atime4: 0
         atime5: 0
         atime6: 0

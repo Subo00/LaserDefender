@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waveConfigs:
-  - {fileID: 11400000, guid: 0730fd8884175d245a4febdbc27b7537, type: 2}
   - {fileID: 11400000, guid: 92eaf2ef55a60df488cc9e87f58e8297, type: 2}
+  - {fileID: 11400000, guid: 0730fd8884175d245a4febdbc27b7537, type: 2}
   - {fileID: 11400000, guid: e6ee5600d72d9734f8e1bc7e664169f4, type: 2}
   _isLooping: 1
   _enemyPools:
